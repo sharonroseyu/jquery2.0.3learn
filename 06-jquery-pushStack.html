@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.2.0.3.js"></script>
+</head>
+<body>
+    <div>hello I am block </div>
+    <span>hello I am inline </span>
+
+    <script>
+        $(document).ready(()=>{
+            $("div").pushStack($("span")).css({background:"red"}).end().css({background:"orange"})
+            // 如果不加end() 将无法对div添加css，end()会回溯到栈的下一层。
+        })
+    </script>
+</body>
+</html>

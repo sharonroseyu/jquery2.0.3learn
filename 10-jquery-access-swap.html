@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10-jquery-access</title>
+    <script src="./jquery.2.0.3.js"></script>
+</head>
+<body>
+    <div id="box" style="width: 100px; height: 100x; background: red; color: #fff; text-align: center; line-height: 100px;">BOX</div>
+    
+    <div>video 27 28</div>
+    <div>swap jq可以获取隐藏元素的属性</div>
+
+    <script>
+        $(function(){
+            console.log($("#box").css("background"))
+            $("#box").css({"background": "orange",fontWeight:"bold"})
+            // $("#box").css("background", "orange")
+        })
+    </script>
+</body>
+</html>

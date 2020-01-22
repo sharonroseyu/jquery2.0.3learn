@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQUERY  Deferred (3043 ~ 3183)行</title>
+    <script src="./jquery.2.0.3.js"></script>
+</head>
+<body>
+    <div>
+        <pre>
+        var dfd = $.Deferred();
+        setTimeout(function(){
+            alert("hello 001")
+            dfd.resolve()
+        },1000);
+
+        dfd.done(()=>{
+            alert("hello 002" )
+        })
+        </pre>
+        
+
+        <ul>
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+            <li>004</li>
+        </ul>
+    </div>
+
+    <script>
+        // 对异步的统一处理
+        
+        var dfd = $.Deferred();
+        setTimeout(function(){
+            alert("hello 001")
+            dfd.resolve()
+        },1000);
+
+        dfd.done(()=>{
+            alert("hello 002" )
+        })
+
+        var $lilist = document.getElementsByTagName("li")
+        console.log($lilist)
+        $("li").css({background:"orange",marginBottom:"4px"})
+    </script>
+</body>
+</html>

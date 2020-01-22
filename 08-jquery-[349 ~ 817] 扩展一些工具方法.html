@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08-jquery-[349 ~ 817] 扩展一些工具方法.html</title>
+    <script src="./jquery.2.0.3.js"></script>
+</head>
+<body>
+    <ul>
+        <li>1111</li>
+        <li>2222</li>
+        <li>3333</li>
+    </ul>
+    <script>
+    // 生成唯一的jq字符串，作用：做一个映射关系
+    console.log($.expando) // jQuery20308467694289960153  唯一性
+
+    // 防止冲突
+    // let $$ = $.noConflict() // 如果$符号被占，就可以使用 $$ 符号,写在script代码首行
+
+    // 是否为函数
+    var show = function(){}
+    console.log($.isFunction(show)) // true
+
+    // isArray 是否为数组
+
+    // isNumeric 是否为数字
+    console.log($.isNumeric(NaN))  // false
+    console.log($.isNumeric(123))  // true
+
+    // 检测数据类型 423行
+    console.group("检测数据类型");
+    console.log("检测数据类型 ： ", $.type([]))
+    console.log("检测数据类型 ： ", $.type(new Date()))
+    console.log("检测数据类型 ： ", $.type({}))
+    console.log("检测数据类型 ： ", $.type(()=>{}))
+    console.groupEnd();
+
+    // 是否是一个对象自变量 json和new Object()形式  433行
+    console.group("是否是一个对象自变量");
+    console.log("是否是一个对象自变量 ： ", $.isPlainObject({name:"lili"}));  // true
+    console.log("是否是一个对象自变量 ： ", $.isPlainObject(new Object()))  // true
+    console.log("是否是一个对象自变量 ： ", $.isPlainObject(new Array()))  // false
+    console.log("是否是一个对象自变量 ： ", $.isPlainObject([])) // false
+    console.groupEnd();
+        
+    // isEmptyObject(): "是否为空对象" 460行
+    console.group("是否为空对象")
+    console.log($.isEmptyObject({})) // true
+    console.log($.isEmptyObject(null)) // true
+    console.log($.isEmptyObject(undefined)) // true
+    console.log($.isEmptyObject(new Object())) // true
+    console.groupEnd();
+
+    // error 报出异常  468行
+    console.group("错误")
+    // console.log($.error("这是一个错误")) 
+    console.groupEnd();
+
+    // 解析节点  parseHTML 475行
+    console.group("解析节点")
+    console.log($.parseHTML("<li>111</li><li>2222</li><script><\/script>",document,true))  // [li, li, script]
+    console.groupEnd();
+
+    // 解析json 502行
+    console.group("解析json")
+    console.log($.parseJSON('{"name":"lili"}')); 
+    console.groupEnd();
+    
+    // 解析 xml 505 行
+    let xmlstr = '<rss version="2.0"><channel><title>RSS TITLE</title></channel></rss>'
+    console.group("解析 xml")
+    console.log($.parseXML(xmlstr)); 
+    console.groupEnd();
+
+    // nodeName  是否为指定节点名 556行
+    console.group("是否为指定节点名: ")
+    console.log($.nodeName(document.documentElement,"html"));  // true
+    console.log($.nodeName(document.body,"body"));  // true
+    console.groupEnd();
+
+    // each 遍历集合 561行 数组和类数组都可以使用
+    $.each(["html","body","fead","div"],(ele,i)=>{console.log(ele,":)",i)})
+    console.group("each 遍历集合")
+    console.log($("li"))
+    console.groupEnd()
+    $.each($("li"),(ele,i)=>{console.log(ele,":)",i)})
+
+    // trim 去除前后空格
+    console.group("trim 去除前后空格：")
+    console.log($.trim("    hello world  !  "))
+    console.groupEnd()
+
+    // inArray() 
+    console.group("inArray ：")
+    console.log($.inArray("b",["a","b","c","d"])) // 1
+    console.groupEnd()
+
+    // merge 合并数组 见03文件 可合并伪数组 636行
+
+    // grep(): "过滤新数组",  // 656行
+    console.group("grep 过滤新数组")
+    var arr = [1,3,2,7]
+    let newarr = $.grep(arr,(n,i)=>{
+        return n > 2
+    },/*该参数是一个布尔值，如果为true 则取n<2的数*/)
+    console.log(newarr) // [3, 7]
+    console.groupEnd()
+
+    // map(): "映射新数组", 676行
+    console.group("map 映射新数组")
+    var arr = [1,3,2,7]
+    let newma = $.map(arr,(n,i)=>{
+        return n +22
+    })
+    console.log(newma) //  [23, 25, 24, 29]
+    console.groupEnd()
+
+    // guid:  "唯一表示符(内部使用)",   video26
+    console.group("guid 唯一表示符(内部使用)")
+    console.log($.guid) 
+    console.groupEnd()
+
+    // proxy(): "改变this指向",
+    // access(): "多功能值操作(内部使用)",  video27
+
+    // now(): "当前时间",
+    console.group("now 获取当前时间")
+    console.log($.now())  // 打印一个时间戳
+    console.groupEnd()
+    
+    // swap(): "css交换(内部使用)"
+   
+
+
+
+
+    </script>
+</body>
+</html>

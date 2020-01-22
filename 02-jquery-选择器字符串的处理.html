@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02-jquery-选择器字符串的处理</title>
+    <script src="./jquery.2.0.3.js"></script>
+</head>
+<body>
+
+    
+    <ul></ul>
+    <script>
+        
+        $(function(){
+            var str = "<li>101</li><li>102</li><li>103</li><li>104</li><script>alert(100000)<\/script>"
+            var arr = jQuery.parseHTML(str,document,true) // true  可以解析script内容执行
+            console.log(arr);
+
+            $.each(arr,(i)=>{
+                $("ul").append(arr[i])
+            })
+
+        })    
+
+        
+    </script>
+
+</body>
+</html>

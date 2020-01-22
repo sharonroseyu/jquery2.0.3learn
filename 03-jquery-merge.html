@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03-jquery-merge 可以合并json</title>
+    <script src="./jquery.2.0.3.js"></script>
+</head>
+<body>
+
+    <ul></ul>
+
+    <script>
+        let arr1 = [{name:"lili",age:10},{name:"lucy",age:11}]    
+        let arr2 = [{name:"john",age:13},{name:"tom",age:11}] 
+        console.log($.merge(arr1,arr2)) // 合并了数组
+
+        // 合并json
+        let arrjson1 = {
+            0:"aaa",
+            1:"bbb",
+            length:2
+        }
+
+        var arr3 = ["john","smith"]
+        console.log($.merge(arrjson1,arr3)) // {0: "aaa", 1: "bbb", 2: "john", 3: "smith", length: 4}
+
+        // 创建dom元素
+        $( "<li></li>",{title:"hello",html:"创建元素的方法哦，你知道吗？",css:{color:"red",borderBottom:"1px solid red"}}).appendTo("ul")
+
+
+
+        // 
+    </script>
+    
+</body>
+</html>
